@@ -84,6 +84,14 @@
         </nav>
 
         <main class="py-4">
+            @if (session()->has('flash'))
+                <div class="container">
+                    <div class="alert alert-success">
+                        {{ session('flash') }}
+                    </div>
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>

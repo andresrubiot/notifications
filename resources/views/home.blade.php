@@ -9,10 +9,11 @@
 
                 <div class="card-body">
 
-                    <form action="#" method="POST">
+                    <form action="{{ route('messages.store') }}" method="POST">
+                        @csrf
 
                         <div class="form-group">
-                            <select name="" id="" class="form-control">
+                            <select name="recipient_id" id="recipient_id" class="form-control">
                                 <option value="">Select user</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{$user->name}}</option>
@@ -21,7 +22,7 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Write your message"></textarea>
+                            <textarea name="body" id="body" class="form-control" placeholder="Write your message"></textarea>
                         </div>
 
                         <div class="form-group">
