@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\MessageSentNotification;
 use App\User;
 use App\Message;
 
@@ -34,15 +35,19 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'body' => 'required',
-            'recipient_id' => 'required|exits:users,id',
+            'recipient_id' => 'required|exists:users,id',
 
         ]);
 
-        Message::create([
+        $message = Message::create([
             'sender_id' => auth()->id(),
             'recipient_id' => $request->recipient_id,
             'body' => $request->body
         ]);
+
+        $recipient = User::findOrFail($request->recipient_id);
+
+        $recipient->notify(new MessageSentNotification($message));
 
         return back()->with('flash', 'Your message has been sent');
     }
