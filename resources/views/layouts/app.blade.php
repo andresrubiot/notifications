@@ -49,6 +49,17 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-iten">
+                                <a href="#" class="nav-link">Send message</a>
+                            </li>
+
+                            <li class="nav-iten">
+                                <a href="#" class="nav-link">
+                                    Notifications
+                                    <span class="badge badge-secondary">1</span>
+                                </a>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
