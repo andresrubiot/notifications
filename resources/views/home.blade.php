@@ -5,16 +5,31 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Send message</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    You are logged in!
+                    <form action="#" method="POST">
+
+                        <div class="form-group">
+                            <select name="" id="" class="form-control">
+                                <option value="">Select user</option>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{$user->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Write your message"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">Send</button>
+                        </div>
+
+                    </form>
+
                 </div>
             </div>
         </div>

@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="nav-iten">
-                                <a href="#" class="nav-link">Send message</a>
+                                <a href="{{ route('home') }}" class="nav-link">Send message</a>
                             </li>
 
                             <li class="nav-iten">
