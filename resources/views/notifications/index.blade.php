@@ -51,6 +51,14 @@
                                         <a href="{{ $readNotification->data['link'] }}">
                                             {{ $readNotification->data['text'] }}
                                         </a>
+
+                                        <form action="{{ route('notifications.destroy', $readNotification->id) }}" method="POST" class="float-right">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-danger btn-sm">
+                                                X
+                                            </button>
+                                        </form>
                                     </li>
                                 @endforeach
                             </ul>
