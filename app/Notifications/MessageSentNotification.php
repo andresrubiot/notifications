@@ -31,7 +31,7 @@ class MessageSentNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -43,8 +43,9 @@ class MessageSentNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject('New message received')
+                    ->line('You have received a message.')
+                    ->action('Click to see the message', route('messages.show', $this->message->id))
                     ->line('Thank you for using our application!');
     }
 
@@ -58,7 +59,7 @@ class MessageSentNotification extends Notification
     {
         return [
             'link' => route('messages.show', $this->message->id),
-            'text' => 'Yout have received a message from ' . $this->message->sender->name
+            'text' => 'You have received a message from ' . $this->message->sender->name
         ];
     }
 }
