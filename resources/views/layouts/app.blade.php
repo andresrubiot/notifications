@@ -54,9 +54,9 @@
                             </li>
 
                             <li class="nav-iten">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('notifications.index') }}" class="nav-link">
                                     Notifications
-                                    @if ($count = Auth::user()->notifications->count())
+                                    @if ($count = Auth::user()->unreadNotifications->count())
                                         <span class="badge badge-secondary">
                                             {{ $count }}
                                         </span>

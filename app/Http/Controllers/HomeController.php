@@ -51,4 +51,11 @@ class HomeController extends Controller
 
         return back()->with('flash', 'Your message has been sent');
     }
+
+    public function show($id)
+    {
+        $message = Message::findOrFail($id);
+
+        return view('messages.show', compact('message'));
+    }
 }
