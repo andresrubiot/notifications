@@ -56,7 +56,11 @@
                             <li class="nav-iten">
                                 <a href="#" class="nav-link">
                                     Notifications
-                                    <span class="badge badge-secondary">1</span>
+                                    @if ($count = Auth::user()->notifications->count())
+                                        <span class="badge badge-secondary">
+                                            {{ $count }}
+                                        </span>
+                                    @endif
                                 </a>
                             </li>
 
